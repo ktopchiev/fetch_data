@@ -1,7 +1,11 @@
-body {
-  display: flex;
+html {
+  display: block;
   justify-content: center;
   align-items: center;
+}
+
+body {
+  display: block;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,22 +19,40 @@ code {
     monospace;
 }
 
-main {
+div.App {
   display: flex;
-  justify-content: center;
-}
-
-nav.listNav {
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+nav.listNav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  align-content: stretch;
+}
+
 button {
-  size: 8rem;
-  display:inline-block;
-  width: 10rem;
-  
+  height: 2rem;
+  flex-grow: 1;
+  background-color:lightgray;
 }
 
 button:hover,

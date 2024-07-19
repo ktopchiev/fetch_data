@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Content from "./Content";
 import Navigation from "./Navigation";
+import apiRequest from "./apiRequest";
 
 function App() {
 
@@ -13,9 +14,7 @@ function App() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch(USERS_URL);
-      if (!response.ok) throw Error('Cannot receive data');
-      const itemsList = await response.json();
+      const itemsList = await apiRequest(USERS_URL);
       setList(itemsList);
     } catch (err) {
       console.log(err.message);
@@ -24,9 +23,7 @@ function App() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch(POSTS_URL);
-      if (!response.ok) throw Error('Cannot receive data');
-      const itemsList = await response.json();
+      const itemsList = await apiRequest(POSTS_URL);
       setList(itemsList);
     } catch (err) {
       console.log(err.message);
@@ -35,9 +32,7 @@ function App() {
 
   const fetchComments = async () => {
     try {
-      const response = await fetch(COMMENTS_URL);
-      if (!response.ok) throw Error('Cannot receive data');
-      const itemsList = await response.json();
+      const itemsList = await apiRequest(COMMENTS_URL);
       setList(itemsList);
     } catch (err) {
       console.log(err.message);
@@ -46,15 +41,16 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation
-        fetchUsers={fetchUsers}
-        fetchPosts={fetchPosts}
-        fetchComments={fetchComments}
-      />
-      
-      <Content 
-        list={list}
-      />
+        <Navigation
+          fetchUsers={fetchUsers}
+          fetchPosts={fetchPosts}
+          fetchComments={fetchComments}
+        />
+      <main>
+        <Content 
+          list={list}
+        />
+      </main>
     </div>
   );
 }
