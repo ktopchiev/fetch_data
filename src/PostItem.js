@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PostItem = ({ list, item }) => {
+const PostItem = ({ item }) => {
     return (
         <li className='postItem' style={{ listStyleType: "none" }}>
             <p id="name" style={{fontWeight: "bold"}}>
