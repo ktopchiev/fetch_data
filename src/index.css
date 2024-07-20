@@ -61,6 +61,11 @@ button:focus {
   color: white;
 }
 
+button.focused {
+  background-color: black;
+  color: white;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -70,7 +75,7 @@ ul {
 li.userItem {
   background-color: rgb(224, 224, 224);
   display: flex;
-  width: 20rem;
+  width: 15rem;
   padding-left: 1rem;
   margin-bottom: 2rem;
   margin-right: 1rem;

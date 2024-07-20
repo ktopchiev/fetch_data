@@ -1,8 +1,9 @@
-const Navigation = ({ setSource }) => {
+const Navigation = ({ source, setSource }) => {
     
     return (
         <header className='listsNav'>
                 <button
+                    className={source === 'users'? 'focused' : null}
                     type='button'
                     onClick={ () => {
                         setSource('users');
@@ -12,6 +13,7 @@ const Navigation = ({ setSource }) => {
                     users
                 </button>
                 <button 
+                    className={source === 'posts'? 'focused' : null}
                     type='button'
                     onClick={ () => {
                         setSource('posts');
@@ -21,6 +23,7 @@ const Navigation = ({ setSource }) => {
                     posts
                 </button>
                 <button 
+                    className={source === 'comments'? 'focused' : null}
                     type='button'
                     onClick={ () => setSource('comments')}
                 >
