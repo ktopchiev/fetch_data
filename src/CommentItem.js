@@ -2,8 +2,8 @@ import React from 'react'
 
 const CommentItem = ({ item }) => {
     return (
-        <li className='commentItem' style={{ listStyleType: "none" }}>
-            <p id="name" style={{ fontWeight: "bold" }}>
+        <li className='commentItem'>
+            <p className="name">
                 {item.name}
             </p>
             <p>
