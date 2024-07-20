@@ -3,7 +3,7 @@ import React from 'react'
 const PostItem = ({ item }) => {
     return (
         <li className='postItem'>
-            <p className="title" style={{ fontWeight: "bold" }}>
+            <p className="title">
                 {item.title}
             </p>
             <p>
