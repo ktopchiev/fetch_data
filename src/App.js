@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Content from "./Content";
+import List from "./List";
 import Navigation from "./Navigation";
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         {fetchError && <p style={{color: 'red'}}> {fetchError} </p>}
         {isLoading && <p> Data is loading... </p>}
         {!fetchError && !isLoading &&
-          <Content
+          <List
             list={list}
             source={source}
           />
