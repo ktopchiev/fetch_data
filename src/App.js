@@ -14,7 +14,6 @@ function App() {
   useEffect(() => {
     const fetchData = async (src) => {
       try {
-        console.log(`useEffect: ${src}`);
         const reqUrl = `${API_URL}${src}`;
         const response = await fetch(reqUrl);
         if (!response.ok) throw Error('Cannot receive data');
@@ -38,14 +37,14 @@ function App() {
         setSource={setSource}
       />
       <main>
-        {fetchError && <p style={{color: 'red'}}> {fetchError} </p>}
+        {fetchError && <p style={{ color: 'red' }}> {fetchError} </p>}
         {isLoading && <p> Data is loading... </p>}
         {!fetchError && !isLoading &&
           <List
             list={list}
             source={source}
           />
-       }
+        }
       </main>
     </div>
   );

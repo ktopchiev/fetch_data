@@ -7,7 +7,7 @@ const List = ({ list, source }) => {
 
     switch (source) {
         case "users":
-            return(
+            return (
                 <ul>
                     {
                         list.map((item) =>
@@ -17,11 +17,11 @@ const List = ({ list, source }) => {
                             />
                         )
                     }
-                    
+
                 </ul>
             )
         case "posts":
-            return(
+            return (
                 <ul>
                     {
                         list.map((item) =>
@@ -31,24 +31,24 @@ const List = ({ list, source }) => {
                             />
                         )
                     }
-                    
+
                 </ul>
             )
-            case "comments":
-                return(
-                    <ul>
-                        {
-                            list.map((item) =>
-                                <CommentItem
-                                    key={item.id}
-                                    item={item}
-                                />
-                            )
-                        }
-                        
-                    </ul>
-                )
-        
+        case "comments":
+            return (
+                <ul>
+                    {
+                        list.map((item) =>
+                            <CommentItem
+                                key={item.id}
+                                item={item}
+                            />
+                        )
+                    }
+
+                </ul>
+            )
+
         default:
             break;
     }

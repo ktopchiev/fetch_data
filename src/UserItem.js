@@ -3,7 +3,7 @@ import React from 'react'
 const UserItem = ({ item }) => {
     return (
         <li className='userItem' style={{ listStyleType: "none" }}>
-            <p id="name" style={{fontWeight: "bold"}}>
+            <p id="name" style={{ fontWeight: "bold" }}>
                 {item.name}
             </p>
             <p>
