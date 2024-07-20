@@ -1,55 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Content from "./Content";
 import Navigation from "./Navigation";
-import apiRequest from "./apiRequest";
 
 function App() {
 
-  const API_URL = "https://jsonplaceholder.typicode.com";
-  const USERS_URL = `${API_URL}/users`;
-  const POSTS_URL = `${API_URL}/posts`;
-  const COMMENTS_URL = `${API_URL}/comments`;
+  const API_URL = "https://jsonplaceholder.typicode.com/";
 
   const [list, setList] = useState([]);
+  const [source, setSource] = useState('users');
+  const [fetchError, setFetchError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchUsers = async () => {
-    try {
-      const itemsList = await apiRequest(USERS_URL);
-      setList(itemsList);
-    } catch (err) {
-      console.log(err.message);
+  useEffect(() => {
+    const fetchData = async (src) => {
+      try {
+        console.log(`useEffect: ${src}`);
+        const reqUrl = `${API_URL}${src}`;
+        const response = await fetch(reqUrl);
+        if (!response.ok) throw Error('Cannot receive data');
+        const itemsList = await response.json();
+        setList(itemsList);
+      } catch (err) {
+        console.log(err.message);
+        setFetchError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }
 
-  const fetchPosts = async () => {
-    try {
-      const itemsList = await apiRequest(POSTS_URL);
-      setList(itemsList);
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
-
-  const fetchComments = async () => {
-    try {
-      const itemsList = await apiRequest(COMMENTS_URL);
-      setList(itemsList);
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
+    fetchData(source);
+  }, [source])
 
   return (
     <div className="App">
-        <Navigation
-          fetchUsers={fetchUsers}
-          fetchPosts={fetchPosts}
-          fetchComments={fetchComments}
-        />
+      <Navigation
+        setSource={setSource}
+      />
       <main>
-        <Content 
-          list={list}
-        />
+        {fetchError && <p style={{color: 'red'}}> {fetchError} </p>}
+        {isLoading && <p> Data is loading... </p>}
+        {!fetchError && !isLoading &&
+          <Content
+            list={list}
+            source={source}
+          />
+       }
       </main>
     </div>
   );

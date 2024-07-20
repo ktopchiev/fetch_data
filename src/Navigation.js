@@ -1,24 +1,28 @@
-import React, { useRef } from 'react'
-
-const Navigation = ({ fetchUsers, fetchPosts, fetchComments }) => {
+const Navigation = ({ setSource }) => {
     
     return (
         <header className='listsNav'>
                 <button
                     type='button'
-                    onClick={fetchUsers}
+                    onClick={ () => {
+                        setSource('users');
+                        console.log('source was set to users')
+                    }}
                 >
                     users
                 </button>
                 <button 
                     type='button'
-                    onClick={fetchPosts}
+                    onClick={ () => {
+                        setSource('posts');
+                        console.log('source was set to posts')
+                    }}
                 >
                     posts
                 </button>
                 <button 
                     type='button'
-                    onClick={fetchComments}
+                    onClick={ () => setSource('comments')}
                 >
                     comments
                 </button>
